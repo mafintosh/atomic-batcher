@@ -16,7 +16,7 @@ var db = require('level')('some.db')
 
 var batch = batcher(function work (ops, cb) {
   // only one batch will happen at the time
-  console.log('batching', ops)
+  console.log('Batching:', ops, '\n')
   db.batch(ops, cb)
 })
 
@@ -24,9 +24,25 @@ batch({type: 'put', key: 'hello', value: 'world-1'})
 batch({type: 'put', key: 'hello', value: 'world-2'})
 batch({type: 'put', key: 'hello', value: 'world-3'})
 batch({type: 'put', key: 'hi', value: 'hello'}, function () {
+  console.log('Printing latest values:\n')
   db.get('hello', console.log) // returns world-3
   db.get('hi', console.log) // returns hello
 })
+```
+
+Running the above example will print
+
+```
+Batching: [ { type: 'put', key: 'hello', value: 'world-1' } ]
+
+Batching: [ { type: 'put', key: 'hello', value: 'world-2' },
+  { type: 'put', key: 'hello', value: 'world-3' },
+  { type: 'put', key: 'hi', value: 'hello' } ]
+
+Printing latest values:
+
+null 'world-3'
+null 'hello'
 ```
 
 ## API
