@@ -1,0 +1,24 @@
+{
+  "name": "atomic-batcher",
+  "version": "0.0.0",
+  "description": "A simple batching function that allows you to atomically batch a series of operations.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "standard": "^7.1.2",
+    "tape": "^4.6.0"
+  },
+  "scripts": {
+    "test": "standard && tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mafintosh/atomic-batcher.git"
+  },
+  "author": "Mathias Buus (@mafintosh)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mafintosh/atomic-batcher/issues"
+  },
+  "homepage": "https://github.com/mafintosh/atomic-batcher"
+}
