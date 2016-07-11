@@ -1,10 +1,12 @@
 # atomic-batcher
 
-A simple batching function that allows you to atomically batch a series of operations.
+A simple batching function that allows you to atomically batch a series of operations. If you are looking for the same thing with a stream interface checkout [byte-stream](https://github.com/maxogden/byte-stream).
 
 ```
 npm install atomic-batcher
 ```
+
+[![build status](http://img.shields.io/travis/mafintosh/atomic-batcher.svg?style=flat)](http://travis-ci.org/mafintosh/atomic-batcher)
 
 ## Usage
 
