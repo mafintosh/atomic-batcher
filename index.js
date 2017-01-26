@@ -23,6 +23,7 @@ function batcher (run) {
       return
     }
 
+    running = true
     run(nextBatch, done)
   }
 
