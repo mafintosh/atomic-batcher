@@ -13,18 +13,6 @@ tape('runs once', function (t) {
   }
 })
 
-tape('runs once', function (t) {
-  var batch = batcher(run)
-
-  batch(['hello'])
-
-  function run (vals, cb) {
-    t.same(vals, ['hello'])
-    t.end()
-    cb()
-  }
-})
-
 tape('runs once with two vals', function (t) {
   var batch = batcher(run)
 
@@ -50,6 +38,20 @@ tape('batches', function (t) {
 
   function run (vals, cb) {
     t.same(vals, expected.shift())
+    process.nextTick(cb)
+  }
+})
+
+tape('empty batch is called', function (t) {
+  var batch = batcher(run)
+
+  batch([])
+  batch([], function () {
+    t.end()
+  })
+
+  function run (vals, cb) {
+    t.same(vals, [])
     process.nextTick(cb)
   }
 })

@@ -19,8 +19,11 @@ function batcher (run) {
     pendingCallbacks = null
 
     if (!nextBatch || !nextBatch.length) {
-      callbacks = null
-      return
+      if (!callbacks || !callbacks.length) {
+        callbacks = null
+        return
+      }
+      if (!nextBatch) nextBatch = []
     }
 
     running = true
