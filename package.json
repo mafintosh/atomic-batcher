@@ -1,6 +1,6 @@
 {
   "name": "atomic-batcher",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple batching function that allows you to atomically batch a series of operations.",
   "main": "index.js",
   "dependencies": {},
