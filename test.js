@@ -32,13 +32,15 @@ tape('batches', function (t) {
   batch('hello')
   batch('hej')
   batch('hi')
-  batch('hey', function () {
+  batch('hey', function (err, batch) {
+    t.same(err, null)
+    t.same(batch, ['hej', 'hi', 'hey'])
     t.end()
   })
 
   function run (vals, cb) {
     t.same(vals, expected.shift())
-    process.nextTick(cb)
+    process.nextTick(cb, null, vals)
   }
 })
 

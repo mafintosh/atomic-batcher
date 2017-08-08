@@ -23,7 +23,7 @@ var batch = batcher(function work (ops, cb) {
 batch({type: 'put', key: 'hello', value: 'world-1'})
 batch({type: 'put', key: 'hello', value: 'world-2'})
 batch({type: 'put', key: 'hello', value: 'world-3'})
-batch({type: 'put', key: 'hi', value: 'hello'}, function () {
+batch({type: 'put', key: 'hi', value: 'hello'}, function (err, res) {
   console.log('Printing latest values:\n')
   db.get('hello', console.log) // returns world-3
   db.get('hi', console.log) // returns hello

@@ -8,8 +8,8 @@ function batcher (run) {
 
   return append
 
-  function done (err) {
-    if (callbacks) callAll(callbacks, err)
+  function done (err, batch) {
+    if (callbacks) callAll(callbacks, err, batch)
 
     running = false
     callbacks = pendingCallbacks
@@ -55,6 +55,6 @@ function pushArray (list, val) {
   for (var i = 0; i < val.length; i++) list.push(val[i])
 }
 
-function callAll (list, err) {
-  for (var i = 0; i < list.length; i++) list[i](err)
+function callAll (list, err, batch) {
+  for (var i = 0; i < list.length; i++) list[i](err, batch)
 }
